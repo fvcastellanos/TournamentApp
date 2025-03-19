@@ -1,0 +1,53 @@
+
+@inherits ChatPage
+
+@page "/chat"
+@rendermode InteractiveServer
+
+<PageTitle>Chat</PageTitle>
+
+<div class="container fluid top-separator">
+    <div class="row justify-content-center">
+
+        <h1>Chat</h1>
+        <div class="top-separator">
+            <div class="card">
+                <div class="card-header">
+                    Let's chat!
+                </div>
+                <div class="card-body">
+                    @if (!IsRegistered)
+                    {
+                        <Field>
+                            <FieldLabel>Nickname</FieldLabel>
+                            <TextEdit Placeholder="Nickname" Text="@Nickname" />
+                        </Field>
+                        <Button Color="Color.Primary"Clicked="@Register">Register</Button>
+
+                    }
+                    else
+                    {
+                        <div class="top-separator">
+                            <ul class="list-group list-group-flush">
+                                @foreach (var message in Messages)
+                                {
+                                    <li class="list-group
+                                        list-group-item">@message</li>
+                                }
+                            </ul>
+                        </div>
+                        <div class="top-separator">
+                            <Field>
+                                <FieldLabel>@Nickname says:</FieldLabel>
+                                <TextEdit Placeholder="Message" @bind-Text="@Message" />
+                            </Field>
+                            <Button Color="Color.Primary" Clicked="@SendMessage">Send</Button>
+                            &nbsp;
+                            <Button Color="Color.Secondary" Clicked="@Unregister">Unregister</Button>
+                        </div>
+                    }
+                </div>
+            </div>        
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+# Ignore Visual Studio temporary files, build results, and
+# user-specific files
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Ignore build output directories
+bin/
+obj/
+
+# Ignore NuGet packages
+*.nupkg
+*.snupkg
+
+# Ignore the .NET Core user secrets
+secrets.json
+
+# Ignore the .NET Core local history
+.history/
+
+# Ignore Rider project files
+.idea/
+*.sln.iml
+
+# Ignore JetBrains Rider IDE files
+.idea/
+*.sln.iml
+
+# Ignore VS Code workspace settings
+.vscode/
+
+# Ignore npm packages
+node_modules/
+
+# Ignore logs
+logs/
+*.log
+
+# Ignore temporary files
+*.tmp
+*.temp
+
+# Ignore publish output
+publish/
+

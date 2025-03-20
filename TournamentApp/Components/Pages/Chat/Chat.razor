@@ -31,8 +31,9 @@
                             <ul class="list-group list-group-flush">
                                 @foreach (var message in Messages)
                                 {
-                                    <li class="list-group
-                                        list-group-item">@message</li>
+                                    <li class="list-group list-group-item">
+                                        @message.Content
+                                    </li>
                                 }
                             </ul>
                         </div>
@@ -41,9 +42,9 @@
                                 <FieldLabel>@Nickname says:</FieldLabel>
                                 <TextEdit Placeholder="Message" @bind-Text="@Message" />
                             </Field>
-                            <Button Color="Color.Primary" Clicked="@SendMessage">Send</Button>
+                            <Button Color="Color.Primary" Clicked="@(() => SendAsync(Message))">Send</Button>
                             &nbsp;
-                            <Button Color="Color.Secondary" Clicked="@Unregister">Unregister</Button>
+                            <Button Color="Color.Secondary" Clicked="@(() => DisconnectAsync())">Unregister</Button>
                         </div>
                     }
                 </div>
@@ -51,3 +52,16 @@
         </div>
     </div>
 </div>
+
+<Toaster>
+    <Toast @bind-Visible="@ShowMessage">
+        <ToastHeader>
+            <Strong Margin="Margin.IsAuto.FromEnd">Pst...</Strong>
+            <Small></Small>
+            <CloseButton />
+        </ToastHeader>
+        <ToastBody>
+            @ErrorMessage
+        </ToastBody>
+    </Toast>
+</Toaster>

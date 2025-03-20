@@ -4,6 +4,7 @@ using Blazorise.Icons.FontAwesome;
 using TournamentApp.Components;
 using Steeltoe.Extensions.Configuration.Placeholder;
 using TournamentApp.Services;
+using TournamentApp.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,8 @@ builder.Services.AddBlazorise(options =>
         options.Immediate = true;
     }).AddBootstrap5Providers()
     .AddFontAwesomeIcons();
+
+builder.Services.AddSignalR();
 
 // Services
 builder.Services.AddSingleton<ChatService>();
@@ -40,6 +43,8 @@ app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 app.UseAntiforgery();
+
+app.MapHub<SimpleChatHub>(SimpleChatHub.HubUrl);
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();

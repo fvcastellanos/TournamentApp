@@ -5,6 +5,8 @@ using TournamentApp.Components;
 using Steeltoe.Extensions.Configuration.Placeholder;
 using TournamentApp.Services;
 using TournamentApp.Hubs;
+using Steeltoe.Connector.MongoDb;
+using TournamentApp.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +21,12 @@ builder.Services.AddBlazorise(options =>
     .AddFontAwesomeIcons();
 
 builder.Services.AddSignalR();
+
+// MongoDB
+builder.Services.AddMongoClient(builder.Configuration);
+
+// Repositories
+builder.Services.AddSingleton<TournamentRepository>();
 
 // Services
 builder.Services.AddSingleton<ChatService>();

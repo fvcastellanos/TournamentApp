@@ -30,6 +30,7 @@ builder.Services.AddSingleton<TournamentRepository>();
 
 // Services
 builder.Services.AddSingleton<ChatService>();
+builder.Services.AddScoped<TournamentService>();
 
 builder.Configuration
     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)

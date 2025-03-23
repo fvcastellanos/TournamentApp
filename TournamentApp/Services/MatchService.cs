@@ -24,8 +24,6 @@ public class MatchService
             MatchName = matchName,
             MatchId = Guid.NewGuid().ToString()
         };
-
-        
     }
 
     public void StartMatch()
